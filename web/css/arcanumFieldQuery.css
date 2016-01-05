@@ -1,0 +1,104 @@
+form { display: inline; }
+body {
+  margin: 0;
+}
+
+td.checkbox input { 
+  margin:  0px; 
+  padding: 0px; 
+  border:  0px; 
+  width:  15px; 
+  height: 15px; 
+}
+
+td.fieldName {
+  text-align: right;
+  padding-right: 3px;
+}
+
+/* #similaritiesPercent option */
+#similaritiesPercent {
+  /* width: 20px; */
+  font-family: "Trebuchet MS", Verdana, Geneva, Tahoma, Arial, Helvetica, sans-serif;
+  border: 1px solid #00008B;
+  margin:  0px; 
+  padding: 0px; 
+  border:  0px; 
+  font-size: 8pt;
+}
+#similaritiesPercent option
+{
+  line-height: 1em;
+  font-size: 8pt;
+  margin:  0px; 
+  padding: 0px; 
+  border:  0px; 
+}
+p#selectedFieldName { 
+  text-align: center;
+  margin: 0;
+}
+span.container {
+  font-weight: bolder;
+  color: maroon;
+}
+
+.yui-navset {
+	width: 90%;
+	margin: 0 auto;
+}
+
+ul, li {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.yui-nav, .yui-nav li {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0pt;
+	padding: 0pt;
+}
+
+ul.yui-nav {
+	margin-bottom: 0.5em;
+}
+
+.yui-nav li {
+	margin-right: 0.5em;
+	padding: 4px;
+	width: 100px;
+	float: left;
+}
+
+.yui-nav li a {
+	text-decoration: none;
+}
+
+.yui-nav li {
+	cursor: pointer;
+	display: -moz-inline-stack;
+	vertical-align: bottom;
+	border: 1px solid black;
+	border-bottom: none;
+}
+
+#fieldQueryTabButton {
+	background-color: #fff;
+}
+
+#proximityQueryTabButton {
+	background-color: #ccc;
+}
+
+#proximityQueryTab {
+	display: none;
+}
+
+.yui-content {
+	clear: both;
+	border: 1px solid black;
+	background-color: #fff;
+}

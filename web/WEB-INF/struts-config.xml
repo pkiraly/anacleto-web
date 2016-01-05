@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="treeViewForm"
+			type="com.anacleto.struts.form.TreeViewForm" />
+		<form-bean name="searchResultForm"
+			type="com.anacleto.struts.form.SearchResultForm" />
+		<form-bean name="showDocumentForm"
+			type="com.anacleto.struts.form.ShowDocumentForm" />
+		<form-bean name="showDocumentMetaForm"
+			type="com.anacleto.struts.form.ShowDocumentMetaForm" />
+		<form-bean name="showContentForm"
+			type="com.anacleto.struts.form.ShowContentForm" />
+		<form-bean name="errorForm"
+			type="com.anacleto.struts.form.ErrorForm" />
+
+		<form-bean name="advancedQueryForm"
+			type="com.anacleto.struts.form.AdvancedQueryForm" />
+		<form-bean name="fieldQueryForm"
+			type="com.anacleto.struts.form.FieldQueryForm" />
+		<form-bean name="treeFragmentForm"
+			type="com.anacleto.struts.form.TreeFragmentForm" />
+		<form-bean name="termListForm"
+			type="com.anacleto.struts.form.TermListForm" />
+		<form-bean name="termListFragmentForm"
+			type="com.anacleto.struts.form.TermListFragmentForm" />
+		<form-bean name="arcanumFieldQueryForm"
+			type="com.anacleto.struts.form.ArcanumFieldQueryForm" />
+		<form-bean name="welcomeForm"
+			type="com.anacleto.struts.form.WelcomeForm" />
+
+		<form-bean name="treeFilterForm"
+			type="com.anacleto.struts.form.TreeFilterForm" />
+		<form-bean name="treeFilterFragmentForm"
+			type="com.anacleto.struts.form.TreeFilterFragmentForm" />
+		<form-bean name="imageLinkForm"
+			type="com.anacleto.struts.form.ImageLinkForm" />
+		<form-bean name="cssLinkForm"
+			type="com.anacleto.struts.form.CssLinkForm" />
+		<form-bean name="nxt3QueryLinkForm"
+			type="com.anacleto.struts.form.Nxt3QueryLinkForm" />
+		<form-bean name="htmlLinkForm"
+			type="com.anacleto.struts.form.HtmlLinkForm" />
+
+		<form-bean name="pdfHighlighterForm"
+			type="com.anacleto.struts.form.PdfHighlighterForm" />
+		<form-bean name="pdfHolderForm"
+			type="com.anacleto.struts.form.PdfHolderForm" />
+	</form-beans>
+
+	<global-exceptions />
+
+	<global-forwards>
+		<forward name="errorForward" path="/form/error.jsp" />
+		<forward name="searchResult" path="/searchResult.do" />
+		<forward name="showDocument" path="/showDocument.do" />
+	</global-forwards>
+
+	<action-mappings>
+		<action attribute="treeViewForm" input="/form/tree.jsp"
+			name="treeViewForm" path="/treeView" scope="request"
+			type="com.anacleto.struts.action.TreeViewAction" />
+
+		<action attribute="searchResultForm"
+			input="/form/searchResult.jsp" name="searchResultForm"
+			path="/searchResult" scope="request"
+			type="com.anacleto.struts.action.SearchResultAction" />
+
+		<action attribute="showDocumentForm"
+			input="/form/showDocument.jsp" name="showDocumentForm"
+			path="/showDocument" scope="request"
+			type="com.anacleto.struts.action.ShowDocumentAction" />
+
+		<action attribute="showDocumentMetaForm"
+			input="/form/showDocumentMeta.jsp" name="showDocumentMetaForm"
+			path="/showDocumentMeta" scope="request"
+			type="com.anacleto.struts.action.ShowDocumentMetaAction" />
+
+		<action attribute="showContentForm"
+			input="/form/showCOntent.jsp" name="showContentForm"
+			path="/showContent" scope="request"
+			type="com.anacleto.struts.action.ShowContentAction" />
+
+		<action attribute="errorForm" input="/form/error.jsp"
+			name="errorForm" path="/error" scope="request"
+			type="com.anacleto.struts.action.ErrorAction" />
+
+		<action attribute="advancedQueryForm"
+			input="/form/advancedQuery.jsp" name="advancedQueryForm"
+			path="/advancedQuery" scope="request"
+			type="com.anacleto.struts.action.AdvancedQueryAction" />
+		<action attribute="fieldQueryForm" input="/form/fieldQuery.jsp"
+			name="fieldQueryForm" path="/fieldQuery" scope="request"
+			type="com.anacleto.struts.action.FieldQueryAction">
+			<forward name="searchResults" path="/searchResult.do" />
+		</action>
+
+		<action attribute="termListForm" input="/form/termList.jsp"
+			name="termListForm" path="/termList" scope="request"
+			type="com.anacleto.struts.action.TermListAction" />
+
+		<action attribute="termListFragmentForm"
+			input="/form/termListFragment.jsp" name="termListFragmentForm"
+			path="/termListFragment" scope="request"
+			type="com.anacleto.struts.action.TermListFragmentAction" />
+
+		<action attribute="arcanumFieldQueryForm"
+			input="/form/arcanumFieldQuery.jsp" name="arcanumFieldQueryForm"
+			path="/arcanumFieldQuery" scope="request"
+			type="com.anacleto.struts.action.ArcanumFieldQueryAction">
+			<forward name="searchResults" path="/searchResult.do" />
+		</action>
+
+		<action attribute="welcomeForm" input="/form/welcome.jsp"
+			name="welcomeForm" path="/welcome" scope="request"
+			type="com.anacleto.struts.action.WelcomeAction" />
+
+		<action attribute="treeFragmentForm"
+			input="/form/treeFragment.jsp" name="treeFragmentForm"
+			path="/treeFragment" scope="request"
+			type="com.anacleto.struts.action.TreeFragmentAction" />
+
+		<action attribute="treeFilterForm" input="/form/treeFilter.jsp"
+			name="treeFilterForm" path="/treeFilter" scope="request"
+			type="com.anacleto.struts.action.TreeFilterAction" />
+
+		<action attribute="treeFilterFragmentForm"
+			input="/form/treeFilterFragment.jsp" name="treeFilterFragmentForm"
+			path="/treeFilterFragment" scope="request"
+			type="com.anacleto.struts.action.TreeFilterFragmentAction" />
+
+		<action attribute="imageLinkForm" input="/form/imageLink.jsp"
+			name="imageLinkForm" path="/imageLink" scope="request"
+			type="com.anacleto.struts.action.ImageLinkAction" />
+
+		<action attribute="cssLinkForm" input="/form/cssLink.jsp"
+			name="cssLinkForm" path="/cssLink" scope="request"
+			type="com.anacleto.struts.action.CssLinkAction" />
+		<action attribute="nxt3QueryLinkForm"
+			input="/form/nxt3QueryLink.jsp" name="nxt3QueryLinkForm"
+			path="/nxt3QueryLink" scope="request"
+			type="com.anacleto.struts.action.Nxt3QueryLinkAction" />
+
+		<action attribute="htmlLinkForm" name="htmlLinkForm"
+			path="/htmlLink" scope="request"
+			type="com.anacleto.struts.action.HtmlLinkAction" />
+
+		<action attribute="pdfHighlighterForm" name="pdfHighlighterForm"
+			path="/pdfHighlighter" scope="request"
+			type="com.anacleto.struts.action.PdfHighlighterAction" />
+
+		<action attribute="pdfHolderForm" input="/form/pdfHolder.jsp"
+			name="pdfHolderForm" path="/pdfHolder" scope="request"
+			type="com.anacleto.struts.action.PdfHolderAction" />
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+	<message-resources parameter="CustomizedResources" key="custom" />
+
+</struts-config>
+

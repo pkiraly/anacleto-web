@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Arcanum" default="deploy" basedir=".">
+
+	<property file="build.properties" />
+
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="web.dir" value="${basedir}/web" />
+	<property name="lib.dir" value="${basedir}/lib" />
+
+	<property name="tomcat.home" value="${basedir}/ISO/tools/apache-tomcat-5.5.23-embed" />
+	<property name="tomcat.lib.dir" value="${tomcat.home}/lib" />
+	<property name="iso.webapp.dir" value="${tomcat.home}/webapps" />
+
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="build.classes.dir" value="${build.dir}/classes/java" />
+
+	<path id="classpath">
+		<pathelement location="${build.classes.dir}" />
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+
+		<fileset dir="${tomcat.lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classname="org.apache.jasper.JspC" name="jasper2">
+		<classpath id="jspc.classpath">
+			<pathelement location="${java.home}/../lib/tools.jar" />
+			<fileset dir="${tomcat.home}/lib">
+				<include name="*.jar" />
+			</fileset>
+
+		</classpath>
+	</taskdef>
+
+	<target name="prepare">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}" />
+	</target>
+
+	<target name="build-war" depends="prepare" description="build war file">
+		<war destfile="${build.dir}/arcanum.war" webxml="${web.dir}/WEB-INF/web.xml">
+			<fileset dir="${web.dir}" excludes="**/web.xml" />
+		</war>
+	</target>
+
+	<target name="clean">
+		<delete dir="${iso.webapp.dir}/anacleto" />
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Compile classes                                                    -->
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<target name="compile" depends="prepare">
+		<javac 
+			srcdir="${src.dir}" 
+			destdir="${build.classes.dir}" 
+			debug="on" 
+			deprecation="on" 
+			optimize="off" 
+			failonerror="false" 
+			includes="**/*.java" 
+			compiler="modern">
+
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="deploy" depends="build-war">
+		<copy file="${build.dir}/arcanum.war" todir="${deploy.dir}" />
+	</target>
+
+	<target name="prepareDvd" depends="prepare">
+		<copy todir="${iso.webapp.dir}/anacleto">
+			<fileset dir="${web.dir}">
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- ================================================================== -->
+	<!-- Compile jsp-s need ...on jour ant path                             -->
+	<!-- ================================================================== -->
+	<target name="jasper" depends="prepareDvd">
+		<jasper2 validateXml="false" uriroot="${iso.webapp.dir}/anacleto" 
+			webXmlFragment="${iso.webapp.dir}/anacleto/WEB-INF/generated_web.xml" 
+			outputDir="${iso.webapp.dir}/anacleto/WEB-INF/src" />
+	</target>
+
+	<target name="jar" depends="compile, build-war">
+		<jar basedir="${build.classes.dir}" 
+			destfile="${basedir}/ISO/tools/tomcatStarter.jar">
+			<fileset dir="${src.dir}" includes="**/*.*" excludes="**/*.java" />
+		</jar>
+	</target>
+
+	<target name="iso" depends="jar, prepareDvd">
+		<delete file="${iso.output}">
+		</delete>
+		<echo message="Creating ISO image">
+		</echo>
+		<exec executable="${cygwin.home}/bin/mkisofs.exe" 
+			error="c:\\isoerr.txt" output="Creating ISO image">
+			<arg line="-J -R -V 'Szazadok' -graft-points -o ${iso.output} ${iso.input} content/=${content.dir} jdk1.5.0_09/=${j2sdk.dir} index/=${index.dir}" />
+		</exec>
+
+	</target>
+
+
+</project>
