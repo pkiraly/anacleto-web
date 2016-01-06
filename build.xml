@@ -35,18 +35,18 @@
 		</classpath>
 	</taskdef>
 
-	<target name="prepare">
+	<target name="prepare" description="Creates build directories">
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${build.classes.dir}" />
 	</target>
 
-	<target name="build-war" depends="prepare" description="build war file">
-		<war destfile="${build.dir}/arcanum.war" webxml="${web.dir}/WEB-INF/web.xml">
+	<target name="build-war" depends="prepare" description="Build the .war file">
+		<war destfile="${build.dir}/anacleto.war" webxml="${web.dir}/WEB-INF/web.xml">
 			<fileset dir="${web.dir}" excludes="**/web.xml" />
 		</war>
 	</target>
 
-	<target name="clean">
+	<target name="clean" description="Clean webapps directory">
 		<delete dir="${iso.webapp.dir}/anacleto" />
 	</target>
 
@@ -55,7 +55,7 @@
 	<!-- ================================================================== -->
 	<!--                                                                    -->
 	<!-- ================================================================== -->
-	<target name="compile" depends="prepare">
+	<target name="compile" depends="prepare" description="Compile the project">
 		<javac 
 			srcdir="${src.dir}" 
 			destdir="${build.classes.dir}" 
@@ -65,13 +65,12 @@
 			failonerror="false" 
 			includes="**/*.java" 
 			compiler="modern">
-
 			<classpath refid="classpath" />
 		</javac>
 	</target>
 
-	<target name="deploy" depends="build-war">
-		<copy file="${build.dir}/arcanum.war" todir="${deploy.dir}" />
+	<target name="deploy" depends="build-war" description="Deploy .war file to the deploy directory (Tomcat/webapps)">
+		<copy file="${build.dir}/anacleto.war" todir="${deploy.dir}" />
 	</target>
 
 	<target name="prepareDvd" depends="prepare">
