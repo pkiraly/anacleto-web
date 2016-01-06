@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"  prefix="bean"  %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html"  prefix="html"  %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"  prefix="bean"  
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-html"  prefix="html"  
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" 
+%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html>
 <head>
   <title>content navigation bar</title>
@@ -20,6 +19,7 @@ var loaded           = false;
 var oNavigationFrame = top.frames['navigationFrame'];
 var oSelector        = oNavigationFrame.frames['navigationSelector'];
 var content          = window.parent.frames['content'];
+alert(content.location);
 var showResultIcons  = false;
 var showPrev         = false;
 var showNext         = false;

@@ -1,11 +1,10 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"   prefix="bean"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html"   prefix="html"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic"  prefix="logic"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested"%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page pageEncoding="UTF-8"
+%><%@ page language="java" contentType="text/html; charset=UTF-8"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"   prefix="bean"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-html"   prefix="html"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-logic"  prefix="logic"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-nested" prefix="nested"
+%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
@@ -60,23 +59,24 @@ function hideContentHead()
 function onLinkClickEvent(url) {
 	var oFrm = top.frames['contentHead'];
 	if(oFrm.window.location.href == url) {
+		// alert("refreshContent");
 		oFrm.refreshContent();
 	} else {
+		// alert("not refreshContent");
 		oFrm.location.href = url;
 	}
 	top.redrawContentHead = true;
+	// alert("->top.showContentHead()");
 	top.showContentHead();
 	top.redrawContentHead = false;
 }
 
-function flink( offset )
-{
+function flink( offset ) {
   oForm.elements['offset'].value = offset;
   oForm.submit();
 }
 
-function searchResultSubmit()
-{
+function searchResultSubmit() {
   if( query != oForm.elements['query'].value )
     oForm.elements['offset'].value = 0;
   // trim the spaces from the end
@@ -352,4 +352,3 @@ function getResultListNavigationLinks()
 </html:form>
 </body>
 </html>
-

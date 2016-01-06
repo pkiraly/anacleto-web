@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"	prefix="bean"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html"	prefix="html"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"%>
-<%@ taglib uri="http://tesujionline.com/anacleto/anacleto.tld" prefix="anacleto"%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"	 prefix="bean"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-html"	 prefix="html"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-logic"   prefix="logic"
+%><%@ taglib uri="http://tesujionline.com/anacleto/anacleto.tld" prefix="anacleto"
+%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -28,32 +27,32 @@ function checkLocationOfContent() {
 	if(currentLoc != getLoc(oCntHead)) {
 		currentLoc = getLoc(oCntHead);
 		if(currentLoc.indexOf("welcome.jsp") == -1) {
-			top.redrawContentHead = true;
-			top.showContentHead();
-			top.redrawContentHead = false;
+			window.top.redrawContentHead = true;
+			window.top.showContentHead();
+			window.top.redrawContentHead = false;
 		}
 	}
 }
 
 function getContentHeadRef() {
 	// var oFrm = top.document.getElementById('content');
-	var oFrm = top.frames['contentHead'];
+	var oFrm = window.top.frames['contentHead'];
 	return oFrm;
 }
 
 function getContentRef() {
 	// var oFrm = top.document.getElementById('content');
-	var oFrm = top.frames['content'];
+	var oFrm = window.top.frames['content'];
 	return oFrm;
 }
 
 function getLoc(oFrm) {
+	var oFrm = window.top.frames['contentHead'];
 	return oFrm.window.location.href;
 }
 intervalId = setInterval(checkLocationOfContent, 1000);
 </script>
 </head>
-
 <body style="margin:0; padding:0;">
 
 <table cellpadding="0" cellspacing="0" width="100%" border="0" height="20">

@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"%>
-<%@ taglib uri="http://tesujionline.com/anacleto/anacleto.tld" prefix="anacleto"%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"
+%><%@ taglib uri="http://tesujionline.com/anacleto/anacleto.tld" prefix="anacleto"
+%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,13 +15,23 @@ function hideContentHead()
   top.redrawContentHead = true;
   top.hideContentHead();
 }
+function showFrames() {
+  // alert('hey dummy');
+  // alert(window.top.frames.length)
+  var text = "";
+  for (var i = 0; i < window.top.frames.length; i++) {
+    var frame = window.top.frames[i];
+    text += i + ") [" + frame.id + "] -- [" + frame.name + "] -- " + frame.location + "\n";
+  }
+  alert(text);
+}
 </script>
 </head>
 <body style="margin:0; padding:0;">
 
 <table cellpadding="0" cellspacing="0" width="100%" border="0" height="63">
   <tr>
-    <td align="left"><img src="image/anacleto.gif" border="0" alt="Anacleto Digital Library"></td>
+    <td align="left"><img src="image/anacleto.gif" border="0" alt="Anacleto Digital Library" onclick="showFrames();"></td>
   </tr>
 </table>
 

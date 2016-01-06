@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"  prefix="bean"  %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html"  prefix="html"  %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"  prefix="bean"  
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-html"  prefix="html"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"
+%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
   <title><bean:write name="showDocumentForm" property="linkedPath" filter="false" /></title>
@@ -36,31 +35,27 @@ var atLast= <bean:write name="showDocumentForm" property="atLast" />;
 var hitNo = -1;
 hitNo = parseInt( <bean:write name="showDocumentForm" property="hitNo" /> );
 
+alert(window.top.location);
 window.top.redrawContentHead = true;
 window.top.showContentHead();
 
 // var top = parent.parent;
 
-function init()
-{
+function init() {
   doLink();
   
-  if( query != '' && hitNo >= 0 )
-  {
+  if (query != '' && hitNo >= 0) {
     oContentHead.document.getElementById('queryNavigation').style.visibility = "visible";
-    if( oContentHead.contentName != name )
-    {
-      initHead( name );
+    if (oContentHead.contentName != name) {
+      initHead(name);
     }
   } else {
     oContentHead.document.getElementById('queryNavigation').style.visibility = "hidden";
   }
 }
 
-function initHead( name )
-{
-  if( oContentHead.loaded )
-  {
+function initHead(name) {
+  if (oContentHead.loaded) {
     tries = 0;
     oContentHead.init( name );
   } else if( tries < 5 ) {
@@ -72,16 +67,13 @@ function initHead( name )
   }
 }
 
-function exit()
-{
-  if( ! window.opera )
-  {
+function exit() {
+  if (!window.opera) {
     window.top.hideContentHead();
-    if( oReferenceBar )
+    if (oReferenceBar)
       oReferenceBar.document.getElementById('referenceBar').innerHTML = '';
   }
 }
-
 //-->
 </script>
 

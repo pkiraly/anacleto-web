@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"  prefix="bean"  %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-html"  prefix="html"  %>
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-bean"  prefix="bean"  
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-html"  prefix="html"  
+%><%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" 
+%><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html:html>
 <head>
   <title>content navigation bar</title>
@@ -16,7 +15,7 @@
   <script language="JavaScript" src="js/showDocumentMeta.js" type="text/javascript"></script>
 
 <script language="JavaScript" type="text/javascript">
-var name        = '<bean:write name="showDocumentMetaForm" property="name" />';
+var docName        = '<bean:write name="showDocumentMetaForm" property="name" />';
 var linkedPath  = '';
 var query       = '<bean:write name="showDocumentMetaForm" property="query" />';
 var contentType = '<bean:write name="showDocumentMetaForm" property="contentType" />';
@@ -54,7 +53,7 @@ if( parent.location != document.location )
 }
 
 function getQuery() { return (query) ? deHTML(query, 'query') : '';}
-function getName() { return (name) ? deHTML(name, 'name') : '';}
+function getName() { return (docName) ? deHTML(docName, 'name') : '';}
 function getHitNo() { return (hitNo && hitNo > -1) ? hitNo : ''; }
 function getLinkedPath()  { return (linkedPath) ? deHTML(linkedPath, 'linkedPath') : '';}
 function getAtLast(){ return (atLast) ? atLast : false;}
@@ -87,14 +86,14 @@ function varCheck()
 {
     alert( '[oDocument]' + top.LN
       + 'hitNo: '  + oDocument.hitNo  + top.LN
-      + 'name: '   + oDocument.name   + top.LN
+      + 'docName: '+ oDocument.docName+ top.LN
       + 'path: '   + oDocument.path   + top.LN
       + 'query: '  + oDocument.query  + top.LN
       + 'atLast: ' + oDocument.atLast + top.LN
       + top.LN
       + '[content]' + top.LN
       + 'hitNo: '  + content.hitNo  + top.LN
-      + 'name: '   + content.name   + top.LN
+      + 'docName: '+ content.docName+ top.LN
       + 'path: '   + content.path   + top.LN
       + 'query: '  + content.query  + top.LN
       + 'atLast: ' + content.atLast + top.LN
@@ -191,13 +190,13 @@ function refreshContent() {
 	// refresh content
 	var oContent = window.top.frames['content'];
 	if( oContent ) {
-		var sURL = "showDocument.do?name=" + name;
+		var sURL = "showDocument.do?name=" + docName;
 		if(query != "" && isPrevNextDocNavigation == false) {
 			if(contentType == "PDFPERPAGECONTENT") {
 				var baseURL = document.location.href;
 				baseURL = baseURL.substr(0, baseURL.indexOf("showDocumentMeta"));
 				sURL += "%23xml=" + baseURL + "pdfHighlighter.do"
-					+  '?name=' + name
+					+  '?name=' + docName
 					+  '%26query=' + query
 					// +  '%26zoom=100'
 					+  '%26view=FitVH,100'
@@ -248,7 +247,6 @@ function baseInit() {
 <style type="text/css">
  form, input, span.admin { display: inline; }
 </style>
-
 </head>
 <body onload="loaded = true; baseInit();">
 
